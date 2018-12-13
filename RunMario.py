@@ -85,7 +85,6 @@ while episode_counter < total_episodes:
         rewards = np.array(rewards)
         next_state_values = np.array(next_state_values)        
         GAEs = np.array(GAEs)
-        GAEs = (GAEs - GAEs.mean()) / GAEs.std()
         
         # Update the old model parameters to start off training (since we need to calculate the ratio between new and old)
         model.update()
