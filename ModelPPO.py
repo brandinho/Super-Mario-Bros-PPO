@@ -42,7 +42,7 @@ class PPO():
                 # Feed into a Dense Layer
                 weights_hidden = tf.Variable(tf.random_normal([dimensionality, self.n_hidden], stddev = tf.sqrt(2/(dimensionality + self.n_hidden))), trainable = trainable, name = "WeightsHidden")
                 bias_hidden = tf.Variable(tf.zeros([1,self.n_hidden]) + 0.01, trainable = trainable, name = "BiasHidden")
-                hidden_layer = tf.nn.tanh(tf.matmul(conv2_flat, weights_hidden) + bias_hidden, name = "HiddenLayer")
+                hidden_layer = tf.nn.elu(tf.matmul(conv2_flat, weights_hidden) + bias_hidden, name = "HiddenLayer")
                 
                 # Concatenate the hidden layer and the one hot encodings for the previous actions the agent took
                 concat_hidden_layer = tf.concat([hidden_layer, self.previous_actions], 1)
