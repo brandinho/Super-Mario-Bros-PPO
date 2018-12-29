@@ -111,7 +111,7 @@ class PPO():
     
     # Training function that uses mini-batches that are shuffled between each epoch
     def train(self, inputs, actions, GAE, rewards, next_state_value, prev_actions_list, epochs, batch_size):
-        batches_per_epoch = inputs.shape[0]//batch_size
+        batches_per_epoch = inputs.shape[0]//batch_size + 1
         
         for i in range(epochs):
             shuffled_indexes = np.random.choice(inputs.shape[0], size = inputs.shape[0], replace = False)
